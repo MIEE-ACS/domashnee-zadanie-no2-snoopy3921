@@ -15,15 +15,16 @@ namespace Dz2
         {   
 
             double centerPoint = -8;
-            
-            if (Math.Abs(centerPoint - x) > R)
-            {
+            //Console.WriteLine("****{0}", Math.Abs(centerPoint - x));
+            if ( Math.Abs(x - centerPoint) > R)
+            {   
+                //return (Convert.ToDouble(Math.Abs(centerPoint - x)) > R).ToString();
                 return "Undef";
             }
             else
             {
                 double xInCircle = Math.Abs(centerPoint - x);
-                double yInCircle = R - Math.Sqrt(Math.Pow(R, 2) - Math.Pow(xInCircle, 2));
+                double yInCircle = Math.Sqrt(Math.Pow(R, 2) - Math.Pow(xInCircle, 2));
                 return (2 - yInCircle).ToString("F3");
             }
           
@@ -67,8 +68,8 @@ namespace Dz2
             Console.WriteLine("\n");
             for(double x = -10; x < 4; x += 0.2)
             {
-                if(x>=-10 && x < -6)    Console.WriteLine("y({0:F3})\t=\t{1}", x, FirstSegment(x, R));
-                if (x >= -6 && x < -4)  Console.WriteLine("y({0:F3})\t=\t{1}", x, SecondSegment(x));
+                if(x>=-10 && x <= -6)    Console.WriteLine("y({0:F3})\t=\t{1}", x, FirstSegment(x, R));
+                if (x > -6 && x < -4)  Console.WriteLine("y({0:F3})\t=\t{1}", x, SecondSegment(x));
                 if (x >= -4 && x < 2)   Console.WriteLine("y({0:F3})\t=\t{1}", x, ThirdSegment(x));
                 if (x >= 2 && x < 4)    Console.WriteLine("y({0:F3})\t=\t{1}", x, FourthSegment(x));
             }   
